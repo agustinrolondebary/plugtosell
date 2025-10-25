@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plug2Sell — Envío Gratis (mínimo limpio)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="p2s-wrap">
+    <!-- Leyenda centrada -->
+    <p id="p2sCaption" class="p2s-caption">
+      Agregá <span class="missing" id="p2sMissing">$0</span> para obtener envío gratis
+    </p>
+
+    <!-- $0 | barra | $umbral -->
+    <div class="p2s-row">
+      <div class="p2s-label" id="p2sLeft">$0</div>
+      <div class="p2s-track" aria-label="Progreso envío gratis" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="p2s-fill" id="p2sFill"></div>
+      </div>
+      <div class="p2s-label" id="p2sRight">$0</div>
+    </div>
+  </main>
+
+  <!-- Dashboard simple (inferior izquierdo) -->
+  <section class="p2s-dash" aria-label="Panel de demo">
+    <div class="row"><label>Umbral</label><input id="p2sTh" type="number" value="35000" min="0" step="1"></div>
+    <div class="row"><label>Subtotal</label><input id="p2sSb" type="number" value="12000" min="0" step="1"></div>
+    <div class="row" style="gap:6px">
+      <button class="p2s-btn" id="p2sApply">Actualizar</button>
+      <button class="p2s-btn secondary" id="p2sAdd">+ $5.000</button>
+      <button class="p2s-btn secondary" id="p2sClear">Vaciar</button>
+    </div>
+  </section>
+
+  <img class="headerlanding" src="./assets/headerlanding.png" alt="">
+
+  <!-- Relleno para probar scroll / sticky -->
+  <h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1>
+  <h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1>
+  <h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1>
+  <h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1>
+
+  <script src="index.js"></script>
+</body>
+</html>

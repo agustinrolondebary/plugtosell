@@ -1,0 +1,175 @@
+:root {
+    --accent: #20b877;  /* verde relleno */
+    --danger: #e53935;  /* rojo faltante */
+    --text: #111;
+    --radius: 6px;
+  }
+  
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Inter, Arial;
+    background: #f6f7fb;
+    color: var(--text);
+  }
+  
+  /* Wrapper superior centrado */
+  .p2s-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 2147483647; /* el máximo posible en CSS */
+    align-items: center;
+    padding: 10px 16px;
+  
+    /* Sticky top */
+    position: sticky;
+    top: 0;
+    z-index: 214748;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,.05);
+  
+    transition: transform .22s ease, opacity .22s ease;
+    will-change: transform, opacity;
+    margin-top: 0;
+  }
+  
+  /* Estado oculto al hacer scroll hacia abajo */
+  .p2s-wrap.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .p2s-inner {
+    max-width: 960px;
+    width: 100%;
+  }
+  
+  /* Fallback: si no se usa .p2s-inner en el HTML, centrar y limitar ancho igual */
+  .p2s-wrap > :not(.p2s-dash) {
+    max-width: 960px;
+    width: 100%;
+  }
+  
+  /* Leyenda centrada arriba */
+  .p2s-caption {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 4px;
+    font-size: 15px;
+    overflow: hidden;
+    max-height: 48px;
+    transform: translateY(0);
+    transition: max-height .45s ease, transform .45s ease;
+  }
+  .p2s-caption .missing {
+    color: var(--danger);
+    font-weight: 600;
+  }
+  
+  /* Estado colapsado de la leyenda */
+  .p2s-caption.is-collapsed{
+    max-height: 0;
+    margin: 0;
+    transform: translateY(-4px);
+  }
+  
+  /* Mostrar la leyenda mientras el usuario pasa el mouse por encima del contenedor */
+  .p2s-wrap:hover .p2s-caption{
+    max-height: 48px;
+    transform: translateY(0);
+  }
+  
+  /* Fila: $0 | barra | $umbral */
+  .p2s-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    align-items: center;
+  }
+  .p2s-label {
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Barra */
+  .p2s-track {
+    position: relative;
+    height: 12px;
+    border-radius: var(--radius);
+    background: #eef2f7;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+  }
+  .p2s-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    background: var(--accent);
+    border-radius: inherit;
+    transition: width 0.35s ease;
+  }
+  
+  /* Dashboard inferior izquierdo */
+  .p2s-dash {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    background: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-size: 14px;
+    min-width: 240px;
+  }
+  .p2s-dash .row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .p2s-dash label {
+    width: 80px;
+    color: #444;
+    font-size: 13px;
+  }
+  .p2s-dash input {
+    flex: 1;
+    min-width: 0;
+    width: 120px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font: inherit;
+  }
+  .p2s-btn {
+    background: var(--text);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+  .p2s-btn.secondary {
+    background: #f3f4f6;
+    color: var(--text);
+  }
+  .headerlanding {
+    display: block;
+    width: 100%;
+    max-width: 1920px;
+    height: auto;
+    margin: 0 auto 20px;
+  }
+  
+  /* Accesibilidad */
+  @media (prefers-reduced-motion: reduce) {
+    .p2s-wrap { transition: none; }
+  }
+  
+  .p2s-start-buy {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .p2s-start-buy:hover { opacity: 0.85; }
