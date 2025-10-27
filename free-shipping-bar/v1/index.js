@@ -82,9 +82,9 @@
       render();
     });
     $('#p2sAdd')?.addEventListener('click', ()=>{
-      const v = Number($('#p2sSb')?.value || 0) + 5000;
-      const input = $('#p2sSb'); if (input) input.value = String(v);
-      state.subtotal = v; render();
+      const INCREMENT = 5000;
+      state.subtotal = Math.max(0, Number(state.subtotal) + INCREMENT);
+      render();
     });
     $('#p2sClear')?.addEventListener('click', ()=>{
       const input = $('#p2sSb'); if (input) input.value = '0';

@@ -26,21 +26,115 @@
 
   <!-- Dashboard simple (inferior izquierdo) -->
   <section class="p2s-dash" aria-label="Panel de demo">
-    <div class="row"><label>Umbral</label><input id="p2sTh" type="number" value="35000" min="0" step="1"></div>
-    <div class="row"><label>Subtotal</label><input id="p2sSb" type="number" value="12000" min="0" step="1"></div>
     <div class="row" style="gap:6px">
-      <button class="p2s-btn" id="p2sApply">Actualizar</button>
-      <button class="p2s-btn secondary" id="p2sAdd">+ $5.000</button>
-      <button class="p2s-btn secondary" id="p2sClear">Vaciar</button>
+      <button class="p2s-btn secondary" id="p2sClear">Vaciar Carrito</button>
     </div>
   </section>
 
+  <section class="p2s-demo-page">
+    <article class="p2s-product">
+      <div class="p2s-product-media">
+        <!-- Reemplazá el src con tu URL real -->
+        <img src="../../images/hoodie.jpeg" alt="Producto demo" class="p2s-product-img">
+      </div>
+  
+      <div class="p2s-product-info">
+        <h1 class="p2s-product-title">Chaqueta Casual Liviana</h1>
 
-  <!-- Relleno para probar scroll / sticky -->
-  <h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1>
-  <h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1>
-  <h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1>
-  <h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1><h1>hola</h1>
+  
+        <div class="p2s-product-price">
+          <span class="current">$ 146.000</span>
+          <span class="compare">$ 169.000</span>
+        </div>
+  
+        <div class="p2s-product-colors">
+          <span class="label">Color:</span>
+          <button class="swatch" aria-label="Azul"></button>
+          <button class="swatch" aria-label="Gris"></button>
+          <button class="swatch" aria-label="Negro"></button>
+        </div>
+  
+        <div class="p2s-product-sizes">
+          <span class="label">Talle:</span>
+          <button class="size" aria-pressed="true">S</button>
+          <button class="size">M</button>
+          <button class="size">L</button>
+          <button class="size">XL</button>
+        </div>
+  
+        <!-- Bloque de urgencia con sello flotante -->
+
+        <div class="p2s-verified-box">
+          <div class="p2s-urgency">⏳ A este ritmo se agotará en <strong>2 días</strong>      <a href="https://plugtosell.com" target="_blank" class="p2s-verified-anchor">
+            <img src="../../images/verificado2.png" alt="Verificado por PlugtoSell" title="Verificado por www.plugtosell.com" class="p2s-verified-icon">
+          </a></div>
+        </div>
+  
+        <div class="p2s-product-actions">
+          <button class="p2s-btn p2s-btn-primary" id="p2sAdd">Agregar al carrito</button>
+        </div>
+  
+        <ul class="p2s-product-bullets">
+          <li>Envío a todo el país</li>
+          <li>Cambio gratis 30 días</li>
+          <li>3 y 6 cuotas sin interés</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+
+  <section class="p2s-demo-page">
+    <article class="p2s-product">
+      <div class="p2s-product-media">
+        <!-- Reemplazá el src con tu URL real -->
+        <img src="../../images/sweater.jpeg" alt="Producto demo" class="p2s-product-img">
+      </div>
+  
+      <div class="p2s-product-info">
+        <h1 class="p2s-product-title">Polar sin capucha</h1>
+
+  
+        <div class="p2s-product-price">
+          <span class="current">$ 146.000</span>
+          <span class="compare">$ 169.000</span>
+        </div>
+  
+        <div class="p2s-product-colors">
+          <span class="label">Color:</span>
+          <button class="swatch" aria-label="Azul"></button>
+          <button class="swatch" aria-label="Gris"></button>
+          <button class="swatch" aria-label="Negro"></button>
+        </div>
+  
+        <div class="p2s-product-sizes">
+          <span class="label">Talle:</span>
+          <button class="size" aria-pressed="true">S</button>
+          <button class="size">M</button>
+          <button class="size">L</button>
+          <button class="size">XL</button>
+        </div>
+  
+        <!-- Bloque de urgencia con sello flotante -->
+
+        <div class="p2s-verified-box">
+          <div class="p2s-urgency">⏳ A este ritmo se agotará en <strong>2 días</strong>      <a href="https://plugtosell.com" target="_blank" class="p2s-verified-anchor">
+            <img src="../../images/verificado2.png" alt="Verificado por PlugtoSell" title="Verificado por www.plugtosell.com" class="p2s-verified-icon">
+          </a></div>
+        </div>
+  
+        <div class="p2s-product-actions">
+          <button class="p2s-btn p2s-btn-primary" id="p2sAdd">Agregar al carrito</button>
+        </div>
+  
+        <ul class="p2s-product-bullets">
+          <li>Envío a todo el país</li>
+          <li>Cambio gratis 30 días</li>
+          <li>3 y 6 cuotas sin interés</li>
+        </ul>
+      </div>
+    </article>
+  </section>
 
   <script src="index.js"></script>
 </body>

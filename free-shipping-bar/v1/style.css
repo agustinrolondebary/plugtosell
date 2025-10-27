@@ -1,267 +1,181 @@
-:root {
-    --accent: #20b877;  /* verde relleno */
-    --danger: #e53935;  /* rojo faltante */
-    --text: #111;
-    --radius: 6px;
-  }
+.p2s-btn-primary {
+  background:#111; color:#fff; border-radius:8px;
+  padding: 12px 14px; font-size:14px; font-weight:600; text-align:center; height:auto; display:inline-block; width:100%;
+}
 
+/* ============================
+   P2S BASELINE RESTORE (safe)
+   ============================ */
+/* Global safety */
 *, *::before, *::after { box-sizing: border-box; }
 body { overflow-x: hidden; }
-  
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Inter, Arial;
-    background: #f6f7fb;
-    color: var(--text);
-  }
-  
-  /* Wrapper superior centrado */
-  .p2s-wrap {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    z-index: 2147483647; /* el máximo posible en CSS */
-    align-items: center;
-    padding: 10px 16px;
-  
-    /* Sticky top */
-    position: sticky;
-    top: 0;
-    z-index: 214748;
-    background: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,.05);
-  
-    transition: transform .22s ease, opacity .22s ease;
-    will-change: transform, opacity;
-    margin-top: 0;
-  }
-.p2s-wrap { z-index: 2147483647 !important; }
+/* Typography baseline */
+html, body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, "Noto Sans", sans-serif;
+  line-height: 1.4;
+  color: var(--text);
+}
+button, input, select, textarea { font: inherit; }
+:root {
+  --accent: #20b877;
+  --danger: #e53935;
+  --text: #111;
+  --radius: 6px;
+}
 
-  /* Estado oculto al hacer scroll hacia abajo */
-  .p2s-wrap.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  .p2s-inner {
-    max-width: 960px;
-    width: 100%;
-  }
-  
-  /* Fallback: si no se usa .p2s-inner en el HTML, centrar y limitar ancho igual */
-  .p2s-wrap > :not(.p2s-dash) {
-    max-width: 960px;
-    width: 100%;
-  }
-  
-  /* Leyenda centrada arriba */
-  .p2s-caption {
-    text-align: center;
-    margin: 0;
-    margin-bottom: 4px;
-    font-size: 15px;
-    overflow: hidden;
-    max-height: 48px;
-    transform: translateY(0);
-    transition: max-height .45s ease, transform .45s ease;
-  }
-  .p2s-caption .missing {
-    color: var(--danger);
-    font-weight: 600;
-  }
-  
-  /* Estado colapsado de la leyenda */
-  .p2s-caption.is-collapsed{
-    max-height: 0;
-    margin: 0;
-    transform: translateY(-4px);
-  }
-  
-  /* Mostrar la leyenda mientras el usuario pasa el mouse por encima del contenedor */
-  .p2s-wrap:hover .p2s-caption{
-    max-height: 48px;
-    transform: translateY(0);
-  }
-  
-  /* Fila: $0 | barra | $umbral */
-  .p2s-row {
-    display: grid;
-    grid-template-columns: auto minmax(0,1fr) auto;
-    column-gap: 12px;
-    gap: 12px;
-    align-items: center;
-    max-width: 720px;       /* limita el ancho máximo de la barra */
-    width: 100%;
-    margin: 0 auto;         /* centra horizontalmente */
-  }
-  .p2s-label {
-    font-size: 14px;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;     /* evita saltos de línea en $0 y $35.000 */
-  }
-  
-  /* Barra */
-  .p2s-track {
-    position: relative;
-    height: 12px;
-    border-radius: var(--radius);
-    background: #eef2f7;
-    border: 1px solid #e5e7eb;
-    overflow: hidden;
-  }
-  .p2s-fill {
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 0%;
-    background: var(--accent);
-    border-radius: inherit;
-    transition: width 0.35s ease;
-  }
-  
-  /* Dashboard inferior izquierdo */
-  .p2s-dash {
-    position: fixed;
-    left: 16px;
-    right: 16px;               /* mantener dentro del viewport */
-    bottom: calc(96px + env(safe-area-inset-bottom, 0px)); /* sube el panel y respeta notch/barras */
-    background: #fff;
-    padding: 12px;
-    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); /* más aire interior abajo */
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    font-size: 14px;
-    min-width: 240px;
-    width: auto;               /* deja que se adapte */
-    max-width: min(92vw, 380px);
-    max-height: 76vh;          /* subimos un poco el panel, evita corte inferior */
-    overflow: auto;            /* scroll interno si hace falta */
-  }
-  .p2s-dash .row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 8px;
-    flex-wrap: wrap;           /* permite que botones e inputs bajen de línea */
-  }
-  .p2s-dash label {
-    width: 80px;
-    color: #444;
-    font-size: 13px;
-  }
-  .p2s-dash input {
-    flex: 1;
-    min-width: 0;
-    width: 100%;
-    padding: 6px 8px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font: inherit;
-  }
-  .p2s-btn {
-    background: var(--text);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 6px 10px;
-    cursor: pointer;
-  }
-  .p2s-btn.secondary {
-    background: #f3f4f6;
-    color: var(--text);
-  }
-  .headerlanding {
-    display: block;
-    width: 100%;
-    max-width: 1920px;
-    height: auto;
-    margin: 0 auto 20px;
-  }
-  
-  /* Accesibilidad */
-  @media (prefers-reduced-motion: reduce) {
-    .p2s-wrap { transition: none; }
-  }
-  
-  .p2s-start-buy {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .p2s-start-buy:hover { opacity: 0.85; }
+/* Sticky wrapper (header bar) */
+.p2s-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 10px;
+  position: sticky; top: 0; z-index: 2147483647;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: transform .22s ease, opacity .22s ease;
+}
+.p2s-wrap.hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
 
+/* Caption */
+.p2s-caption {
+  text-align: center;
+  margin: 0 0 2px 0;
+  font-size: 13px;
+  max-height: 32px;
+  overflow: hidden;
+  transition: max-height .35s ease, transform .35s ease;
+}
+.p2s-caption .missing { color: var(--danger); font-weight: 600; }
+.p2s-caption.is-collapsed { max-height: 0; margin: 0; transform: translateY(-2px); }
 
+/* Row: $0 | bar | $threshold */
+.p2s-row {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  column-gap: 12px;
+  align-items: center;
+  max-width: 90%;
+  width: 50%;
+  margin: 0 auto;
+}
+.p2s-label { font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
+/* Progress bar */
+.p2s-track {
+  position: relative; height: 8px;
+  border-radius: var(--radius);
+  background: #eef2f7; border: 1px solid #e5e7eb; overflow: hidden;
+}
+.p2s-fill { position: absolute; inset: 0 auto 0 0; width: 0%; background: var(--accent); border-radius: inherit; transition: width .35s ease; }
 
+/* Dashboard (demo) */
+.p2s-dash {
+  position: fixed; left: 16px; right: 16px; bottom: calc(64px + env(safe-area-inset-bottom,0px));
+  background: #fff; padding: 8px; border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  font-size: 12px; max-width: min(92vw,300px); margin: 0 auto;
+  z-index: 2147483650; max-height: 60vh; overflow: auto;
+}
+.p2s-dash .row { display:flex; align-items:center; gap:6px; margin-top:6px; flex-wrap: wrap; }
 
+/* Buttons (keep your .p2s-btn-primary from above) */
+.p2s-btn { background: var(--text); color:#fff; border:none; border-radius: 8px; padding:5px 9px; cursor:pointer; font-size:13px; }
+.p2s-btn.secondary { background:#f3f4f6; color: var(--text); }
 
+/* Link button: Iniciar compra */
+.p2s-start-buy {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.p2s-start-buy:hover {
+  opacity: 0.85;
+}
 
+/* Verified box (used by urgency) */
+.p2s-verified-box { position:relative;  border-radius:8px; padding:8px 10px; margin:6px 0 2px; background:#f1f3f679; box-shadow:0 1px 4px rgba(0,0,0,.03); color:#222; text-align:center; font-size:13px; }
+.p2s-verified-label { display:inline-block; margin-bottom:6px; background:transparent; color:#444; font-size:10.5px; font-weight:600; text-decoration: underline; text-underline-offset:2px; letter-spacing:.2px; white-space:nowrap; }
+.p2s-verified-label::before { content:""; display:inline-block; width:7px; height:7px; margin-right:6px; border-radius:50%; background:#3aa0ff; box-shadow:0 0 0 2px rgba(58,160,255,.18); vertical-align:middle; }
 
+/* PDP demo grid */
+.p2s-demo-page { max-width: 1080px; margin: 8px auto 24px; padding: 0 12px; }
+.p2s-product { display:grid; grid-template-columns: 1fr; gap:16px; align-items:start; }
+@media (min-width: 960px) {
+  .p2s-product { grid-template-columns: 5fr 4fr; gap: 24px; }
+}
+.p2s-product-media { background:#fff; border:1px solid #eceff1; border-radius:8px; overflow:hidden; }
+.p2s-product-img { display:block; width:100%; height:auto; }
+.p2s-product-info { display:grid; gap:14px; }
+.p2s-product-title { font-size: 22px; line-height: 1.25; margin: 0; }
+.p2s-product-price { display:flex; align-items:baseline; gap:10px; }
+.p2s-product-price .current { font-size:18px; font-weight:700; }
+.p2s-product-price .compare { font-size:13px; color:#9ca3af; text-decoration: line-through; }
+.p2s-product-actions { display:grid; grid-template-columns:1fr; gap:6px; }
+.p2s-product-bullets { margin:0; padding-left:18px; color:#4b5563; font-size:12px; }
 
+/* Variants */
+.swatch { width: 22px; height: 22px; border-radius: 50%; border: 1px solid #e5e7eb; background: var(--c, #ddd); cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; }
+.size { height: 28px; min-width: 32px; padding: 0 8px; border-radius: 6px; border:1px solid #e5e7eb; background:#fff; cursor:pointer; font-weight:600; font-size: 13px; transition: border-color .15s ease, transform .15s ease; }
 
-
-/* ======================
-   📱 Mobile Optimization
-   ====================== */
+/* Mobile tweaks */
 @media (max-width: 768px) {
+  .p2s-wrap { padding: 5px 8px; }
+  .p2s-caption { font-size: 11.5px; max-height: 26px; }
+  .p2s-row { gap: 4px; max-width: 90vw; }
+  .p2s-label { font-size: 11px; }
+  .p2s-track { height: 7px; }
+  .p2s-dash { bottom: calc(64px + env(safe-area-inset-bottom,0px)); max-width:90vw; max-height:50vh; padding-bottom: calc(8px + env(safe-area-inset-bottom,0px)); font-size: 12px; }
+  .p2s-product-title { font-size: 20px; }
+  .p2s-product-price .current { font-size: 18px; }
+  .p2s-verified-box { font-size: 12.5px; padding: 8px; }
+}
+/* ===== Floating verified label to the right outside the grey box ===== */
+.p2s-verified-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .p2s-wrap {
-    padding: 8px 10px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  }
+.p2s-verified-wrap > .p2s-verified-label {
+  position: absolute;
+  top: -14px;
+  right: -6px;
+  background: transparent;
+  color: #444;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  z-index: 2;
+}
 
-  .p2s-caption {
-    font-size: 13px;
-    margin-bottom: 2px;
-    max-height: 40px;
-  }
+.p2s-verified-wrap > .p2s-verified-label::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #3aa0ff;
+  box-shadow: 0 0 0 2px rgba(58, 160, 255, 0.18);
+  vertical-align: middle;
+}
 
-  .p2s-row {
-    grid-template-columns: auto minmax(0,1fr) auto; /* $0 | barra | $umbral */
-    gap: 6px;
-    max-width: 92vw;        /* barra no ocupa todo el ancho y no desborda */
-    margin: 0 auto;
-  }
+/* Verified icon inline with statement */
+.p2s-verified-anchor {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  vertical-align: middle;
+}
 
-  .p2s-label {
-    text-align: center;
-    font-size: 12px;
-    white-space: nowrap;  /* asegura que no se partan los valores */
-  }
-
-  .p2s-track {
-    height: 10px;
-  }
-
-  .p2s-dash {
-    left: 8px;
-    right: 8px;
-    bottom: calc(64px + env(safe-area-inset-bottom, 0px)); /* más alto en mobile */
-    width: auto;
-    max-width: 96vw;
-    max-height: 66vh;
-    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-    overflow: auto;
-  }
-
-  .p2s-dash label {
-    width: auto;
-    flex: 1;
-    font-size: 12px;
-  }
-
-  .p2s-dash input {
-    font-size: 13px;
-  }
-
-  .p2s-dash .row { flex-wrap: wrap; }
-
-  .p2s-btn {
-    padding: 5px 8px;
-    font-size: 13px;
-  }
-
-  .p2s-start-buy {
-    font-size: 14px;
-  }
+.p2s-verified-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
 }
