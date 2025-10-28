@@ -478,35 +478,6 @@
     display: inline;
   }
   
-  /* Responsive */
-  @media (max-width: 768px) {
-    nav {
-      flex-wrap: nowrap;
-    }
-  
-    nav ul {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-    }
-  
-    .nav-left {
-      flex-wrap: nowrap;
-    }
-  
-    .nav-auth {
-      flex-wrap: nowrap;
-    }
-  
-    .buttons {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    nav ul {
-      flex-direction: row;
-      gap: 1rem;
-    }
-  }
   
   .contact-form {
     display: flex;
@@ -548,3 +519,5 @@
   .contact-form button {
     margin-top: 1rem;
   }
+  
+
