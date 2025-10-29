@@ -105,3 +105,36 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", activateCurrentNavLink);
   activateCurrentNavLink();
 });
+// Inline contact form handling logic moved from HTML to JS
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form-contacto');
+  const submitBtn = document.getElementById('contacto-submit-btn');
+  if (!form || !submitBtn) return;
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Mensaje enviado correctamente.';
+        // Optionally clear the form fields
+        form.reset();
+      } else {
+        submitBtn.textContent = 'Error al enviar. Intenta de nuevo.';
+      }
+    })
+    .catch(() => {
+      submitBtn.textContent = 'Error al enviar. Intenta de nuevo.';
+    });
+  });
+});
+
+

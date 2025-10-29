@@ -23,13 +23,14 @@ button, input, select, textarea { font: inherit; }
   --radius: 6px;
 }
 
+
 /* Sticky wrapper (header bar) */
 .p2s-wrap {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6px 10px;
+  padding: 3px 5px;
   position: sticky; top: 0; z-index: 2147483647;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0,0,0,.08);
@@ -131,41 +132,6 @@ button, input, select, textarea { font: inherit; }
   .p2s-product-price .current { font-size: 18px; }
   .p2s-verified-box { font-size: 12.5px; padding: 8px; }
 }
-/* ===== Floating verified label to the right outside the grey box ===== */
-.p2s-verified-wrap {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.p2s-verified-wrap > .p2s-verified-label {
-  position: absolute;
-  top: -14px;
-  right: -6px;
-  background: transparent;
-  color: #444;
-  font-size: 11px;
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-  z-index: 2;
-}
-
-.p2s-verified-wrap > .p2s-verified-label::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 6px;
-  border-radius: 50%;
-  background: #3aa0ff;
-  box-shadow: 0 0 0 2px rgba(58, 160, 255, 0.18);
-  vertical-align: middle;
-}
-
 /* Verified icon inline with statement */
 .p2s-verified-anchor {
   display: inline-flex;
@@ -179,3 +145,4 @@ button, input, select, textarea { font: inherit; }
   height: 14px;
   object-fit: contain;
 }
+

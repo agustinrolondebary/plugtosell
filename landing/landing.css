@@ -205,14 +205,14 @@
   }
   
   /* Tipografía */
-  h1 {
+h1 {
     font-size: 3.3vw;
-    line-height: 1.2;
+    line-height: 1.05;
     color: var(--navy-blue);
   }
   
-  h2 {
-    font-size: 1.2vw;
+h2 {
+    font-size: 1.5vw;
     font-weight: 400;
     color: var(--navy-blue);
     margin: 0 0 2rem 0;
@@ -516,8 +516,159 @@
     min-height: 120px;
   }
   
-  .contact-form button {
-    margin-top: 1rem;
-  }
-  
 
+
+  /* Ajustes mínimos para esta vista usando tu mismo sistema */
+  .waitlist-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 16px;
+      background: var(--page-bg, transparent);
+  }
+
+  .waitlist-card {
+      max-width: 720px;
+      width: 100%;
+      text-align: center;
+  }
+
+  .waitlist-title {
+      margin: 0 0 8px 0;
+  }
+
+  .waitlist-sub {
+      margin: 0 0 24px 0;
+      opacity: .9;
+  }
+
+  .waitlist-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+  }
+
+  .waitlist-form input[type="email"],
+  .waitlist-form input[type="text"] {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      min-width: 260px;
+      flex: 1 1 260px;
+  }
+
+  .waitlist-actions {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+  }
+
+  .back-link {
+      opacity: .8;
+  }
+
+  .back-link:hover {
+      opacity: 1;
+  }
+
+
+
+/* ======================
+   Footer
+======================= */
+.footer {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: 4rem;
+  padding: 2rem 1.5rem;
+}
+
+.footer-main {
+  max-width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-weight: 700;
+  color: var(--navy-blue);
+  font-size: 1.1rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--navy-blue);
+  font-weight: 500;
+  transition: color .2s ease, text-decoration-color .2s ease;
+  text-underline-offset: 3px;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--pastel-orange);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  max-width: 80vw;
+  margin: 1rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+  color: #555;
+  font-size: .92rem;
+}
+
+.footer-bottom .footer-terms {
+  color: var(--navy-blue);
+  text-decoration: none;
+}
+
+.footer-bottom .footer-terms:hover,
+.footer-bottom .footer-terms:focus {
+  color: var(--pastel-orange);
+  text-decoration: underline;
+}
+
+/* Accesibilidad: foco visible en enlaces del footer */
+.footer a:focus-visible {
+  outline: 3px solid var(--pastel-orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-links ul {
+    gap: 1rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .25rem;
+  }
+}
