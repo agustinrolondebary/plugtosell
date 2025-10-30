@@ -30,179 +30,205 @@
     padding-bottom: 6rem;
   }
   
-  /* Nav */
-  .main-nav {
+  /* ======================
+     PTS Floating Navbar
+  ======================= */
+  :root{
+    --pts-bg-900:#0a0a0a;
+    --pts-bg-800:#1a1a1a;
+    --pts-border:#333;
+    --pts-text:#fff;
+    --pts-text-sub:#e0e0e0;
+  }
+
+  /* Floating, centered navbar */
+  .pts-navbar{
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 70px;
-    display: flex;              /* Cambiar a flexbox */
-    align-items: center;        /* Centrar verticalmente */
-    justify-content: space-between; /* Distribuir espacio entre extremos */
-    padding: 0 2rem;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    top: max(16px, env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
+    background:#ffffff;
+    border-radius: 48px;
+    padding: 12px 20px;
+    border: 1px solid rgba(0,0,0,0.08);
     z-index: 1100;
-    border-radius: 0;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    width: fit-content;
+    max-width: calc(100% - 24px);
   }
-  
-  .main-nav.stuck {
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: none;
-    z-index: 1000;
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  .pts-nav__container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:32px;
   }
-  
-  /* Logo a la izquierda */
-  .nav-left {
-    flex: 0 0 auto;             /* No se estira ni encoge */
-    margin-right: 3rem; /* espacio entre logo y menú central */
-    padding-left: 1rem;
-  }
-  
-  /* Menu centrado */
-  .nav-center {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 2rem;
-    flex: 1 1 auto;             /* Ocupa el espacio central */
-    justify-content: center;    /* Centrar horizontalmente */
-    align-items: center;
-  }
-  
-  /* Botones auth a la derecha */
-  .nav-auth {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0 1rem 0 0;
-    gap: 1rem;
-    flex: 0 0 auto;             /* No se estira ni encoge */
-    align-items: center;
-    justify-content: flex-end;
-  }
-  
-  .nav-auth li:first-child {
-    margin-left: 2rem;
-  }
-  
-  .nav-auth .btn-login-link {
-    all: unset; /* elimina todos los estilos previos */
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--navy-blue);
-    cursor: pointer;
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
-    line-height: normal;
-    display: inline;
-    transition: color 0.2s ease;
-  }
-  
-  .nav-auth .btn-login-link:hover {
-    color: var(--pastel-orange);
-  }
-  
-  /* Ajuste fino para links dentro de nav-center */
-  .nav-center li a {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--navy-blue);
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
-  
-  .nav-center li a:hover {
-    color: var(--pastel-orange);
-  }
-  
-  /* Estilo para link activo en el nav */
-  .nav-center li a.active {
-    color: var(--pastel-orange);
-  }
-  
-  /* Botones */
-  .btn-login-link {
-    padding: 0;
-    margin-right: 0;
-    display: flex;
-    line-height: 1.5;
-    vertical-align: middle;
-  }
-  
-  .btn {
+
+  .pts-logo{
     background: linear-gradient(135deg, var(--pastel-orange), #ffd700);
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 0.9em;
-    cursor: pointer;
-    font-weight: 500;
-    padding: 0.6em 1.4em;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  
-  .btn-primary {
-    background: var(--navy-blue); /* azul marino que combina con naranja */
-    color: white;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .btn-primary:hover {
-    background: linear-gradient(135deg, var(--pastel-orange), #ffd700);
-    color: white;
-    filter: brightness(1.05);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-  }
-  
-  .btn-secondary:hover {
-    background: linear-gradient(135deg, var(--pastel-orange), #ffd700);
-    filter: brightness(1.05);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-  }
-  
-  .btn-start {
-    font-size: 1.1em;
-    padding: 0.9em 1.8em;
-    font-weight: 700;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .btn-start:hover {
-    background: linear-gradient(135deg, var(--pastel-orange), #ffd700);
-    color: white;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Logo estilo original */
-  .logo a {
-    background: linear-gradient(135deg, var(--pastel-orange), #ffd700);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     letter-spacing: 1px;
-    cursor: pointer;
     text-decoration: none;
+    cursor: pointer;
   }
+
+  .pts-nav__center{ display:flex; align-items:center; gap:32px; }
+
+  .pts-nav__links{
+    display:flex;
+    list-style:none;
+    gap:24px;
+    position:relative;
+    margin:0;
+    padding:0;
+  }
+
+  .pts-nav__links a{
+    color: var(--navy-blue);
+    text-decoration:none;
+    font-weight:500;
+    font-size:.95rem;
+    transition:color .25s ease;
+    position:relative;
+    padding:2px 0;
+  }
+
+  .pts-nav__links a:hover,
+  .pts-nav__links a.pts-active{
+    color: var(--pastel-orange);
+  }
+
+  .pts-nav__links a::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    bottom:-6px;
+    height:2px;
+    width:0;
+    background: linear-gradient(135deg, var(--pastel-orange), #ffd700);
+    transform:translateX(-50%);
+    transition:width .25s ease;
+  }
+
+  .pts-nav__links a:hover::after,
+  .pts-nav__links a.pts-active::after{
+    width:100%;
+  }
+
+  /* CTA button styles */
+  .pts-nav__auth{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+
+  .pts-btn{
+    padding:8px 16px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:.9rem;
+    transition:transform .2s ease, background .2s ease, opacity .2s ease;
+    white-space:nowrap;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+  /* Buttons: unified styles for old (.btn) and new (.pts-btn) */
+  .btn,
+  .pts-btn{
+    padding: 0.6em 1.4em;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .95rem;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease, opacity .2s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+  }
+  /* Primary button: navy base, pastel hover */
+  .btn-primary,
+  .pts-btn--primary{
+    background: var(--navy-blue);
+    color: #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  }
+  .btn-primary:hover,
+  .pts-btn--primary:hover{
+    background: linear-gradient(135deg, var(--pastel-orange), #ffd700);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  }
+  .btn:focus-visible,
+  .pts-btn:focus-visible{
+    outline: 3px solid rgba(252,169,108,0.4);
+    outline-offset: 2px;
+  }
+  .btn:disabled,
+  .pts-btn:disabled{
+    opacity: .65;
+    cursor: not-allowed;
+  }
+
+  .pts-nav__mobile-cta{ display:none; }
+
+  .pts-menu-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--pts-border);
+    color:var(--pts-text);
+    font-size:1.1rem;
+    padding:6px 10px;
+    border-radius:10px;
+    cursor:pointer;
+  }
+
+  /* Responsive behaviour */
+  @media (max-width: 900px){
+    .pts-navbar{ padding:10px 16px; }
+    .pts-nav__links{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      margin-top:10px;
+      background: rgba(26,26,26,0.95);
+      border:1px solid var(--pts-border);
+      border-radius:16px;
+      flex-direction:column;
+      gap:12px;
+      padding:16px;
+    }
+    .pts-nav__links.pts-open{ display:flex; }
+    .pts-nav__auth{ display:none; }
+    .pts-nav__mobile-cta{ display:flex; }
+    .pts-menu-toggle{ display:block; }
+    .pts-nav__links{
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .pts-nav__links a{
+      color: var(--navy-blue);
+    }
+    .pts-nav__links a:hover{
+      color: var(--pastel-orange);
+    }
+  }
+
+  /* Utility: optional .section for active highlight logic */
+  .section{ min-height: 60vh; display:block; }
+  
   
   /* Tipografía */
 h1 {

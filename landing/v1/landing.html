@@ -13,22 +13,30 @@
 
 <body>
     <header>
-        <nav class="main-nav">
-            <div class="nav-left">
-                <div class="logo"><a href="landing.html">PlugToSell</a></div>
+        <nav class="pts-navbar" role="navigation" aria-label="Principal">
+            <div class="pts-nav__container">
+              <a href="#home" class="pts-logo">PlugToSell</a>
+          
+              <div class="pts-nav__center">
+                <ul class="pts-nav__links" id="ptsNavLinks">
+                  <li><a href="#about">Productos</a></li>
+                  <li><a href="#services">Psicología aplicada</a></li>
+                  <li><a href="#faq">FAQs</a></li>
+                  <li class="pts-nav__mobile-cta">
+                    <a href="#demo" class="pts-btn pts-btn--primary">Demo gratuita</a>
+                  </li>
+                </ul>
+              </div>
+          
+              <div class="pts-nav__auth">
+                <a href="#demo" class="pts-btn pts-btn--primary">Demo gratuita</a>
+              </div>
+          
+              <button class="pts-menu-toggle" id="ptsMenuToggle" aria-expanded="false" aria-controls="ptsNavLinks" aria-label="Abrir menú">
+                ☰
+              </button>
             </div>
-
-            <ul class="nav-center">
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#psicologia">Psicologia aplicada</a></li>
-                <li><a href="#faqs">FAQs</a></li>
-
-            </ul>
-
-            <ul class="nav-auth">
-                <li><a href="waitlist.html" class="btn btn-primary">Demo gratuita</a></li>
-            </ul>
-        </nav>
+          </nav>
     </header>
     <main>
         <div class="main-container">
@@ -87,7 +95,7 @@
         </section>
 
         <section id="contacto" >
-            <h2 class="section-title">¿Alguna duda? No te preocupes, estamos acá para ayudarte.</h2>
+            <h2 class="section-title">Dejanos tu mail. Estamos acá para ayudarte.</h2>
             <form class="contact-form" id="form-contacto" action="https://formspree.io/f/mjkprbgg" method="POST">
               <div class="form-group">
                 <input type="text" name="name" placeholder="Tu nombre" required />

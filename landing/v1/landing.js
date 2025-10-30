@@ -65,46 +65,66 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Scroll-Activated Sticky Navigation
+// PTS Floating Navbar: active link + mobile toggle
 document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector(".main-nav");
-  if (!nav) return;
-  const navTop = nav.offsetTop;
-
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-
-    if (scrollY >= navTop + nav.offsetHeight) {
-      nav.classList.add("stuck");
-    } else {
-      nav.classList.remove("stuck");
-    }
-  });
-
+  const menuToggle = document.getElementById("ptsMenuToggle");
+  const navLinksContainer = document.getElementById("ptsNavLinks");
+  const navLinks = document.querySelectorAll(".pts-nav__links a[href^='#']"); // solo anchors internos
   const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-center a, .nav-auth a");
 
-  function activateCurrentNavLink() {
-    let current = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if (scrollY >= sectionTop) {
-        current = section.getAttribute("id");
-      }
+  // Toggle mobile menu
+  if (menuToggle && navLinksContainer) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinksContainer.classList.toggle("pts-open");
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
+    // Cerrar al hacer click en un link
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinksContainer.classList.remove("pts-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Cerrar al hacer click fuera
+    document.addEventListener("click", (e) => {
+      const clickOutside =
+        !menuToggle.contains(e.target) && !navLinksContainer.contains(e.target);
+      if (clickOutside) {
+        navLinksContainer.classList.remove("pts-open");
+        menuToggle.setAttribute("aria-expanded", "false");
       }
     });
   }
 
-  window.addEventListener("scroll", activateCurrentNavLink);
-  activateCurrentNavLink();
+  // Activar link según scroll
+  function updateActiveLink() {
+    let currentId = "";
+    const offsetTrigger = 200; // margen para activar antes
+
+    sections.forEach((sec) => {
+      const top = sec.offsetTop;
+      if (window.scrollY >= top - offsetTrigger) {
+        currentId = sec.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("pts-active");
+      const href = link.getAttribute("href");
+      if (href && currentId && href === `#${currentId}`) {
+        link.classList.add("pts-active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveLink, { passive: true });
+  window.addEventListener("load", updateActiveLink);
+  window.addEventListener("hashchange", updateActiveLink);
+  updateActiveLink();
 });
+
 // Inline contact form handling logic moved from HTML to JS
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('form-contacto');
@@ -136,5 +156,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
-
